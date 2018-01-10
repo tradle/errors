@@ -1,6 +1,6 @@
 {
   "name": "@tradle/errors",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "match, ignore, rethrow error",
   "main": "index.js",
   "scripts": {
