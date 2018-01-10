@@ -42,7 +42,6 @@ test('errors', function (t) {
     },
   ].forEach(({ error, matches }) => {
     matches.forEach(({ type, result }) => {
-      if (Errors.matches(error, type) !== result) debugger
       t.equal(Errors.matches(error, type), result)
     })
   })
