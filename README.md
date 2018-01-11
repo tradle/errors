@@ -2,11 +2,11 @@
 
 error matching and rethrowing utils. Similar to https://github.com/hapijs/bounce
 
-API is pretty self-explanatory, but see the example below. All three functions, `ignore`, `rethrow` and `matches` accept the same arguments: an error, and a matcher (either an Error subclass or a set of properties to match).
+API is pretty self-explanatory, but see the example below. All three functions, `ignore`, `rethrow` and `matches` accept the same arguments: an error, and criteria (either an Error subclass or a set of properties to match).
 
-`ignore`: ignores an error
-`rethrow`: rethrows an error 
-`matches`: returns true if an error matches the provided matcher
+`ignore`: ignores an error  
+`rethrow`: rethrows an error   
+`matches`: returns true if an error matches the provided criteria
 
 ```js
 const createErrorType = require('error-ex')
