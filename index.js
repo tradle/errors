@@ -5,7 +5,6 @@ const {
 
 const createError = require('error-ex')
 const { AssertionError } = require('assert')
-const { TfTypeError, TfPropertyTypeError } = require('typeforce')
 const aliases = {
   system: [
     // JavaScript
@@ -17,11 +16,7 @@ const aliases = {
     URIError,
 
     // Node
-    AssertionError,
-
-    // Typeforce
-    TfTypeError,
-    TfPropertyTypeError
+    AssertionError
   ],
   developer: 'system'
 }
