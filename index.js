@@ -1,8 +1,5 @@
-const {
-  pick,
-  isEqual
-} = require('lodash')
-
+const pick = require('lodash/pick')
+const isEqual = require('lodash/isEqual')
 const createError = require('error-ex')
 const { AssertionError } = require('assert')
 const aliases = {
