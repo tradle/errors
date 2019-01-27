@@ -2,6 +2,7 @@ const pick = require('lodash/pick')
 const isEqual = require('lodash/isEqual')
 const createError = require('error-ex')
 const { AssertionError } = require('assert')
+const inherits = require('inherits')
 const aliases = {
   system: [
     // JavaScript
@@ -75,9 +76,23 @@ const HttpError = (status, message) => {
 }
 
 const exportError = (err) => pick(err, ['message', 'stack', 'name', 'type'])
+const NotFound = createError('NotFound')
+const UserError = createError('UserError')
+const createUserError = name => {
+  const ctor = createError(name)
+  inherits(ctor, UserError)
+  return ctor
+}
+
+const InvalidOption = createUserError('InvalidOption')
+const InvalidInput = createUserError('InvalidInput')
 
 const errors = {
   HttpError,
+  NotFound,
+  UserError,
+  InvalidOption,
+  InvalidInput,
   export: err => {
     const json = exportError(err)
     if (err instanceof HttpError) {
@@ -90,7 +105,9 @@ const errors = {
   ignore,
   rethrow,
   matches,
-  aliases
+  aliases,
+  createError,
+  createUserError,
 }
 
 module.exports = errors
