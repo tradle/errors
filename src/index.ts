@@ -1,7 +1,6 @@
 import pick from "lodash/pick";
 import isEqual from "lodash/isEqual";
 import { AssertionError } from "assert";
-// import inherits from 'inherits'
 
 const aliases = Object.freeze({
   system: [
