@@ -1,6 +1,7 @@
-import pick from "lodash/pick";
-import isEqual from "lodash/isEqual";
 import { AssertionError } from "assert";
+import pick = require("lodash/pick");
+import isEqual = require("lodash/isEqual");
+
 
 const aliases = Object.freeze({
   system: [
