@@ -4,7 +4,8 @@
   "description": "match, ignore, rethrow error",
   "main": "lib/index.js",
   "scripts": {
-    "test": "node test"
+    "test": "node test",
+    "prepare": "tsc"
   },
   "keywords": [
     "error",
