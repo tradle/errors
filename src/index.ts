@@ -18,10 +18,11 @@ const aliases = Object.freeze({
   developer: "system"
 });
 
-const isSystemError = err => aliases.system.some(ctor => err instanceof ctor);
-const isDeveloperError = isSystemError;
+export const isSystemError = err => aliases.system.some(ctor => err instanceof ctor);
 
-const matches = (err, type) => {
+export const isDeveloperError = isSystemError;
+
+export function matches (err: any, type: any): boolean {
   if (!(err && type)) {
     throw new Error("expected error and match parameters");
   }
@@ -54,19 +55,19 @@ const matches = (err, type) => {
   return true;
 };
 
-const ignore = (err, type) => {
+export const ignore = (err, type) => {
   if (!matches(err, type)) {
     throw err;
   }
 };
 
-const rethrow = (err, type) => {
+export const rethrow = (err, type) => {
   if (matches(err, type)) {
     throw err;
   }
 };
 
-class HttpError extends Error {
+export class HttpError extends Error {
   public status: number;
   constructor(status, message) {
     super(message);
@@ -74,47 +75,47 @@ class HttpError extends Error {
   }
 }
 
-class NotFound extends Error {
+export class NotFound extends Error {
   public name = "NotFound";
 }
 
-class UserError extends Error {
+export class UserError extends Error {
   public name = "UserError";
 }
 
-class InvalidOption extends Error {
+export class InvalidOption extends Error {
   public name = "InvalidOption";
 }
 
-class InvalidInput extends Error {
+export class InvalidInput extends Error {
   public name = "InvalidInput";
 }
 
-class NotImplemented extends Error {
+export class NotImplemented extends Error {
   public name = "NotImplemented";
 }
 
-const createError = (name: string) =>
+export const createError = (name: string) =>
   class extends Error {
     public name = name;
   };
 
-const createUserError = (name: string) =>
+export const createUserError = (name: string) =>
   class extends UserError {
     public name = name;
   };
 
-const exportError = (err: Error) =>
-  pick(err, ["message", "stack", "name", "type", "status"]);
+export const error = (err: Error) =>
+  pick(err, ["message", "stack", "name", "type", "status"])
 
-export {
+export default {
   HttpError,
   NotFound,
   UserError,
   InvalidOption,
   InvalidInput,
   NotImplemented,
-  exportError as export,
+  error,
   isDeveloperError,
   isSystemError,
   ignore,
